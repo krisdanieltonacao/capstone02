@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "647ca60e-cb31-4a94-9780-7b1e0419896d",
+		"name": "Capstone02-tonacao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21501101"
+	},
+	"item": [
+		{
+			"name": "User Requests",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"john@mail.com\",\r\n    \"password\": \"john123\",\r\n    \"firstName\": \"John\",\r\n    \"lastName\": \"Doe\",\r\n    \"mobileNo\": \"09171234567\",\r\n    \"address\": \"Quezon City, Philippines\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3067/users/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"jane@mail.com\",\r\n    \"password\": \"jane123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/users/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNmZmNDBjYjRkMDRiZWRiZTljZiIsImVtYWlsIjoiamFuZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTY2ODE5NDV9.LtL57GaCa2V9d6sJ37UU_maHM9Fx8qCH3jvZPLIzwyw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"62beea3a285617c238b91449\",\r\n    \"quantity\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3067/users/addOrder",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"users",
+								"addOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve all Active Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3067/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve a Single Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3067/products/62bd96620ec73f3daab845d2",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"products",
+								"62bd96620ec73f3daab845d2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Authenticated User Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNmZmNDBjYjRkMDRiZWRiZTljZiIsImVtYWlsIjoiamFuZUBtYWlsLmNvbSIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE2NTY5NTIzMDJ9.e6JrCAfF0PwfkQpKyp_Pq07Oo_HR59TO3aFMJJUBp2U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3067/users/Orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"users",
+								"Orders"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ONLY ADMIN",
+			"item": [
+				{
+					"name": "Change User to Admin Status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNGI2YjEwYjI5YTk0ZTA5MGVjYiIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Njk1MjkxOH0.FXZ8qe8LuWgHGPEG0Qn1OtgwvqytXhlL7KovnCnfjms",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3067/users/62bec33f33455b1b6a285a64/setAsAdmin",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"users",
+								"62bec33f33455b1b6a285a64",
+								"setAsAdmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNGI2YjEwYjI5YTk0ZTA5MGVjYiIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1NjgzMzE1NX0.GU6hClfhFU6XZJqW4mJhPPZzZTWEL6WYTDVckEQ_MPM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3067/users/allOrders",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"users",
+								"allOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNGI2YjEwYjI5YTk0ZTA5MGVjYiIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Njk1MjkxOH0.FXZ8qe8LuWgHGPEG0Qn1OtgwvqytXhlL7KovnCnfjms",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Iphone 13 Pro Max\",\r\n    \"description\": \"128GB Black\",\r\n    \"price\": 60000,\r\n    \"stocks\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3067/products/add",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"products",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNGI2YjEwYjI5YTk0ZTA5MGVjYiIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Njk1MjkxOH0.FXZ8qe8LuWgHGPEG0Qn1OtgwvqytXhlL7KovnCnfjms",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productName\": \"Iphone 5s - ON SALE\",\r\n    \"description\": \"64GB Rose Gold\",\r\n    \"price\": 3000,\r\n    \"stocks\": 10,\r\n    \"isActive\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3067/products/62beea3a285617c238b91449",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"products",
+								"62beea3a285617c238b91449"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Archive Product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyYmVjNGI2YjEwYjI5YTk0ZTA5MGVjYiIsImVtYWlsIjoiam9obkBtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY1Njk1MjkxOH0.FXZ8qe8LuWgHGPEG0Qn1OtgwvqytXhlL7KovnCnfjms",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3067/products/62beea95285617c238b91453/archive",
+							"host": [
+								"localhost"
+							],
+							"port": "3067",
+							"path": [
+								"products",
+								"62beea95285617c238b91453",
+								"archive"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
